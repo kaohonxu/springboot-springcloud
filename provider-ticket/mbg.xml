@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" 
+		/> -->
+	<!-- targetRuntime="MyBatis3Simple":生成简单版的CRUD 
+						MyBatis3：豪华版
+	-->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		<!-- jdbcConnection:指定如何连接到目标数据库 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql:///zhihu" userId="root" password="123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- javaModelGenerator:指定目标的JavaBean的生成策略 targetPackage：目标包名 targetProject：目标工程 -->
+		<javaModelGenerator targetPackage="com.bean"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sqlMapGenerator:sql映射生成策略的定义 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="./src/main/resources/mapper">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- javaClientGenerator:指定mapper接口所在的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.dao" targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 指定要逆向分析哪些表 ;根据表创建JavaBean -->
+		<table tableName="t_voicetype" domainObjectName="Voicetype"></table>
+		<table tableName="t_voicediscuss" domainObjectName="Voicediscuss"></table>
+		<table tableName="t_voice" domainObjectName="Voice"></table>
+		<table tableName="t_users" domainObjectName="Users"></table>
+		<table tableName="t_topicclass" domainObjectName="Topicclass"></table>
+
+		<table tableName="t_topic" domainObjectName="Topic"></table>
+		<table tableName="t_specialcolumn" domainObjectName="Specialcolumn"></table>
+		<table tableName="t_sensitivenumb" domainObjectName="Sensitivenumb"></table>
+		<table tableName="t_section" domainObjectName="Section"></table>
+		<table tableName="t_roundtable" domainObjectName="Roundtable"></table>
+
+		<table tableName="t_question" domainObjectName="Question"></table>
+		<table tableName="t_officialtopic" domainObjectName="Officialtopic"></table>
+		<table tableName="t_dynamiccomment" domainObjectName="Dynamiccomment"></table>
+		<table tableName="t_dynamic" domainObjectName="Dynamic"></table>
+		<table tableName="t_comment" domainObjectName="Comment"></table>
+	</context>
+</generatorConfiguration>
